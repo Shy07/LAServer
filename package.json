@@ -1,0 +1,22 @@
+{
+  "name": "laserver",
+  "version": "1.0.0",
+  "description": "LAServer on Ruby",
+  "main": "index.coffee",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shy07/LAServer.git"
+  },
+  "author": "Lynch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shy07/LAServer/issues"
+  },
+  "homepage": "https://github.com/Shy07/LAServer#readme"
+}
