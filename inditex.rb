@@ -24,6 +24,12 @@ BSK_EXCELS = [
   'textile-fibers.xls'
 ].map { |filename| Spreadsheet.open("data/bsk/#{filename}") }
 
+ZARA_HOME_EXCELS = [
+  'partes-de-la-prenda.xls',
+  'tabla-de-fibras.xls',
+  'tabla-de-paises.xls'
+].map { |filename| Spreadsheet.open("data/zara_home/#{filename}") }
+
 
 module Inditex
   #
@@ -77,6 +83,8 @@ module Inditex
       LFT_EXCELS
     when 3
       BSK_EXCELS
+    when 4
+      ZARA_HOME_EXCELS
     end
   end
   #
@@ -114,4 +122,6 @@ when 'lft'
   Clipboard.set_data Inditex.generate(ARGV[1], 2, ARGV[2]), Clipboard::UNICODETEXT
 when 'bsk'
   Clipboard.set_data Inditex.generate(ARGV[1], 3, ARGV[2]), Clipboard::UNICODETEXT
+when 'zara_home'
+  Clipboard.set_data Inditex.generate(ARGV[1], 4, ARGV[2]), Clipboard::UNICODETEXT
 end

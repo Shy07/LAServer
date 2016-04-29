@@ -120,6 +120,10 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml\
   # =>
   #
   def generate(string_data)
+    if string_data.size < 14
+      string_data = barcode_num_generate string_data
+      puts string_data
+    end
     @key = Digest::MD5.hexdigest string_data
     @bar_filepath = "static/cache/barcode/#{@key}.svg"
     unless File.exist? @bar_filepath
@@ -136,19 +140,19 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml\
   #
   # =>
   #
-  # def barcode_num_generate(barcode)
-  #   num = barcode.split ""
-  #
-  #   sum = 0
-  #   num.reverse.each_with_index { |obj, idx| sum += obj.to_i if idx % 2 == 0 }
-  #   sum *= 3
-  #   num.reverse.each_with_index { |obj, idx| sum += obj.to_i if idx % 2 == 1 }
-  #
-  #   rt = "#{10 - (sum % 10)}"
-  #   rt = '0' if sum.zero?
-  #
-  #   "0#{barcode}#{rt}"
-  # end
+  def barcode_num_generate(barcode)
+    num = barcode.split ""
+
+    sum = 0
+    num.reverse.each_with_index { |obj, idx| sum += obj.to_i if idx % 2 == 0 }
+    sum *= 3
+    num.reverse.each_with_index { |obj, idx| sum += obj.to_i if idx % 2 == 1 }
+
+    rt = 10 - (sum % 10)
+    rt = '0' if rt == 10
+
+    barcode.size == 13 ? "#{barcode}#{rt}" : "0#{barcode}#{rt}"
+  end
 end
 
 AIPATH = 'C:\Program Files\Adobe\Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe'
