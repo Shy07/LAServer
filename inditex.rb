@@ -30,6 +30,12 @@ ZARA_HOME_EXCELS = [
   'tabla-de-paises.xls'
 ].map { |filename| Spreadsheet.open("data/zara_home/#{filename}") }
 
+PANDB_EXCELS = [
+  'partes-de-las-prendas.xls',
+  'tabla-de-paises.xls',
+  'fibras-textiles.xls'
+].map { |filename| Spreadsheet.open("data/pullandbear/#{filename}") }
+
 
 module Inditex
   #
@@ -85,6 +91,8 @@ module Inditex
       BSK_EXCELS
     when 4
       ZARA_HOME_EXCELS
+    when 5
+      PANDB_EXCELS
     end
   end
   #
@@ -124,4 +132,6 @@ when 'bsk'
   Clipboard.set_data Inditex.generate(ARGV[1], 3, ARGV[2]), Clipboard::UNICODETEXT
 when 'zara_home'
   Clipboard.set_data Inditex.generate(ARGV[1], 4, ARGV[2]), Clipboard::UNICODETEXT
+when 'pullandbear'
+  Clipboard.set_data Inditex.generate(ARGV[1], 5, ARGV[2]), Clipboard::UNICODETEXT
 end
