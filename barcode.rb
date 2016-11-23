@@ -155,7 +155,8 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml\
   end
 end
 
-AIPATH = 'C:\Program Files\Adobe\Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe'
+HOME =  File.expand_path '..', __FILE__
+AIPATH = open('illustrator_path', 'rb') {|io| io.read.strip }
 path = Bar_Code.generate(ARGV[0]).gsub '/', "\\"
 
-system "\"#{AIPATH}\" \"C:\\LAServer\\#{path}\""
+system "\"#{AIPATH}\" \"#{HOME.gsub '/', "\\"}\\#{path}\""

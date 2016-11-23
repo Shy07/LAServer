@@ -35,7 +35,8 @@ module QRCode
 end
 
 HOME =  File.expand_path '..', __FILE__
-AIPATH = 'C:\Program Files\Adobe\Adobe Illustrator CC 2015\Support Files\Contents\Windows\Illustrator.exe'
+AIPATH = open('illustrator_path', 'rb') {|io| io.read.strip }
+p AIPATH
 path = QRCode.generate(ARGV[0]).gsub '/', "\\"
 
 system "\"#{AIPATH}\" \"#{HOME.gsub '/', "\\"}\\#{path}\""
