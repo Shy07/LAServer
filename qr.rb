@@ -36,7 +36,6 @@ end
 
 HOME =  File.expand_path '..', __FILE__
 AIPATH = open('illustrator_path', 'rb') {|io| io.read.strip }
-p AIPATH
 path = QRCode.generate(ARGV[0]).gsub '/', "\\"
 
 system "\"#{AIPATH}\" \"#{HOME.gsub '/', "\\"}\\#{path}\""
