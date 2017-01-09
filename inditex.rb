@@ -62,9 +62,9 @@ module Inditex
     else
       @result = pack_data quary_data(string_data), separator
     end
-    print '-> '
+    # print '-> '
     puts @result
-    puts '-> text has been copied into clipboard'
+    # puts '-> text has been copied into clipboard'
     @result
   end
   #
